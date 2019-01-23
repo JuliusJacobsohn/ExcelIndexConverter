@@ -23,9 +23,15 @@ namespace ExcelIndexFinder
             bool isNumeric = int.TryParse(text, out int number);
             if (isNumeric)
             {
-                //Give text as result - inefficient but whatever 
+                //Give text as result - inefficient but whatever
+                if(number >= 99999)
+                {
+                    LabelResult.Text = "Too big";
+                    return;
+                }
+
                 string currentText = "a";
-                int count = 1;
+                int count = 0;
                 while (TextToIndex(currentText) != number)
                 {
                     foreach (var x in GetPermutationsWithRept("abcdefghijklmnopqrstuvwxyz", count))
@@ -33,12 +39,12 @@ namespace ExcelIndexFinder
                         currentText = new string(x.ToArray());
                         if (TextToIndex(currentText) == number)
                         {
-                            LabelResult.Text = currentText;
                             break;
                         }
                     }
                     count++;
                 }
+                LabelResult.Text = currentText;
             }
             else
             {
@@ -75,6 +81,7 @@ namespace ExcelIndexFinder
 
         static IEnumerable<IEnumerable<T>> GetPermutationsWithRept<T>(IEnumerable<T> list, int length)
         {
+            if (length == 0) return new List<List<T>>();
             if (length == 1) return list.Select(t => new T[] { t });
             return GetPermutationsWithRept(list, length - 1)
                 .SelectMany(t => list,
