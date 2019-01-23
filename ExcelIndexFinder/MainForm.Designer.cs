@@ -59,7 +59,7 @@
             this.LabelResult.TabIndex = 2;
             this.LabelResult.Text = "Result";
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -67,8 +67,8 @@
             this.Controls.Add(this.LabelResult);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TextBoxInput);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "Excel Index Finder";
             this.ResumeLayout(false);
             this.PerformLayout();
 
