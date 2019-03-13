@@ -7,3 +7,5 @@ B -> 2,
 AA -> 27,
 ASD -> 1174,
 ...
+
+Easy download of compiled version: https://github.com/Massta/ExcelIndexConverter/raw/master/ExcelIndexFinder.exe
