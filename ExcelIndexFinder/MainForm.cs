@@ -24,9 +24,9 @@ namespace ExcelIndexFinder
             if (isNumeric)
             {
                 //Give text as result - inefficient but whatever
-                if(number >= 99999)
+                if (number >= 99999 || number <= 0)
                 {
-                    LabelResult.Text = "Too big";
+                    LabelResult.Text = "Input invalid";
                     return;
                 }
 
@@ -48,6 +48,11 @@ namespace ExcelIndexFinder
             }
             else
             {
+                if (!text.Any(c => char.IsLetter(c)))
+                {
+                    LabelResult.Text = "Input invalid";
+                    return;
+                }
                 int result = TextToIndex(text);
                 //Give number as result
                 LabelResult.Text = result.ToString();
